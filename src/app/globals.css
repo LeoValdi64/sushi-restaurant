@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0a0a0a;
+  --color-foreground: #f5f5f0;
+  --color-gold: #c9a96e;
+  --color-gold-light: #d4b87a;
+  --color-gold-dark: #a8884d;
+  --color-dark: #0a0a0a;
+  --color-dark-light: #141414;
+  --color-dark-card: #1a1a1a;
+  --color-dark-border: #2a2a2a;
+  --color-cream: #f5f5f0;
+  --color-cream-dark: #e8e4d9;
+  --color-muted: #8a8a7a;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-dark) var(--color-dark);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Decorative line animation */
+@keyframes expand {
+  from { width: 0; }
+  to { width: 80px; }
+}
+
+.animate-expand {
+  animation: expand 1s ease-out forwards;
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Subtle parallax shimmer */
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #c9a96e 0%, #d4b87a 50%, #a8884d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Elegant underline hover */
+.hover-gold-line {
+  position: relative;
+}
+
+.hover-gold-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+
+.hover-gold-line:hover::after {
+  width: 100%;
 }
