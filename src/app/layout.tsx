@@ -14,10 +14,15 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
+const SITE_URL = "https://sushi-restaurant-ochre.vercel.app";
+const SITE_TITLE = "Sakura Sushi | Premium Japanese Dining SF";
+const SITE_DESCRIPTION =
+  "Experience authentic Japanese cuisine at Sakura Sushi. Premium sashimi, handcrafted rolls, and omakase dining in San Francisco.";
+
 export const metadata: Metadata = {
-  title: "Sakura Sushi | Premium Japanese Dining SF",
-  description:
-    "Experience authentic Japanese cuisine at Sakura Sushi. Premium sashimi, handcrafted rolls, and omakase dining in the heart of San Francisco.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: [
     "sushi",
     "Japanese restaurant",
@@ -27,14 +32,18 @@ export const metadata: Metadata = {
     "fine dining",
   ],
   openGraph: {
-    title: "Sakura Sushi | Premium Japanese Dining SF",
-    description:
-      "Experience authentic Japanese cuisine at Sakura Sushi. Premium sashimi, handcrafted rolls, and omakase dining in the heart of San Francisco.",
-    images: ["/og-image.png"],
-    url: "https://sushi-restaurant-ochre.vercel.app",
+    type: "website",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   alternates: {
-    canonical: "https://sushi-restaurant-ochre.vercel.app",
+    canonical: SITE_URL,
   },
 };
 
@@ -90,7 +99,7 @@ export default function RootLayout({
                   closes: "21:30",
                 },
               ],
-              image: "/og-image.png",
+              image: `${SITE_URL}/og-image.png`,
             }),
           }}
         />
